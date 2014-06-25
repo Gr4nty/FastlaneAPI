@@ -3,9 +3,9 @@
 // This can be removed if you use __autoload() in config.php OR use Modular Extensions
 require APPPATH.'/libraries/REST_Controller.php';
 
-class Example extends REST_Controller
+class car extends REST_Controller
 {
-	function car_get()
+	function profile_get()
     {
         if(!$this->get('id'))
         {
@@ -32,7 +32,7 @@ class Example extends REST_Controller
         }
     }
     
-    function car_post()
+    function profile_post()
     {
         //$this->some_model->updateUser( $this->get('id') );
         $message = array('id' => $this->get('id'), 'name' => $this->post('name'), 'email' => $this->post('email'), 'message' => 'ADDED!');
@@ -40,7 +40,7 @@ class Example extends REST_Controller
         $this->response($message, 200); // 200 being the HTTP response code
     }
     
-    function car_delete()
+    function profile_delete()
     {
     	//$this->some_model->deletesomething( $this->get('id') );
         $message = array('id' => $this->get('id'), 'message' => 'DELETED!');
@@ -48,7 +48,7 @@ class Example extends REST_Controller
         $this->response($message, 200); // 200 being the HTTP response code
     }
     
-    function cars_get()
+    function all_get()
     {
         //$users = $this->some_model->getSomething( $this->get('limit') );
         $users = array(
