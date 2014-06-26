@@ -21,17 +21,23 @@ class user extends REST_Controller
 	// Get user data
     function profile_get() {
 
-        if (!$this->get('id') || is_numeric($this->get('id')) == false) {
+        if (!$this->get('id') || is_numeric($this->get('id')) == false) 
+            {
             $this->response(array('error' => 'Bad Request'), 400);
-        } else {
+            } 
+        else 
+            {
             $user = $this->user_model->getUserById($this->get('id'));
-        }
+            }
 
-        if ($user) {
+        if ($user) 
+            {
             $this->response($user, 200); // 200 being the HTTP response code
-        } else {
+            } 
+        else 
+            {
             $this->response(array('error' => 'User not found'), 404);
-        }
+            }
     }
 
 }

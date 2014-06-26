@@ -5,78 +5,42 @@ require APPPATH.'/libraries/REST_Controller.php';
 
 class car extends REST_Controller
 {
-	function profile_get()
-    {
-        if(!$this->get('id'))
-        {
-        	$this->response(array('error' => 'Bad Request'), 400);
-        }
-
-        // $user = $this->some_model->getSomething( $this->get('id') );
-    	$users = array(
-			1 => array('id' => 1, 'make' => 'Nissan', 'email' => 'example1@example.com', 'fact' => 'Loves swimming'),
-			2 => array('id' => 2, 'make' => 'Person Face', 'email' => 'example2@example.com', 'fact' => 'Has a huge face'),
-			3 => array('id' => 3, 'make' => 'Scotty', 'email' => 'example3@example.com', 'fact' => 'Is a Scott!', array('hobbies' => array('fartings', 'bikes'))),
-		);
-		
-    	$user = @$users[$this->get('id')];
-    	
-        if($user)
-        {
-            $this->response($user, 200); // 200 being the HTTP response code
-        }
-
-        else
-        {
-            $this->response(array('error' => 'User could not be found'), 404);
-        }
+	function profile_get() {
+            
+            if ($this->get('id') == TRUE & is_numeric($this->get('id')) == true)
+            {
+              $car = $this->car_model->getCarProfile($this->get('id'));
+            } 
+            else if ($this->get('make') == TRUE)
+            {
+              $car = $this->car_model->getCarProfile($this->get('make'));
+            }
+            else 
+            {
+            $this->response(array('error' => 'Bad Request'), 400);
+            }
+            
+            if ($car) {
+            $this->response($car, 200); // 200 being the HTTP response code
+            } else {
+            $this->response(array('error' => 'Car type not found'), 404);
+            }
+//        if (!$this->get('id') || is_numeric($this->get('id')) == false) 
+//            {
+//            $this->response(array('error' => 'Bad Request'), 400);
+//            } 
+//        else 
+//            {
+//            $user = $this->car_model->getUserById($this->get('id'));
+//            }
+//
+//        if ($user) 
+//            {
+//            $this->response($user, 200); // 200 being the HTTP response code
+//            } 
+//        else 
+//            {
+//            $this->response(array('error' => 'Car Type not found'), 404);
+//            }
     }
-    
-    function profile_post()
-    {
-        //$this->some_model->updateUser( $this->get('id') );
-        $message = array('id' => $this->get('id'), 'name' => $this->post('name'), 'email' => $this->post('email'), 'message' => 'ADDED!');
-        
-        $this->response($message, 200); // 200 being the HTTP response code
-    }
-    
-    function profile_delete()
-    {
-    	//$this->some_model->deletesomething( $this->get('id') );
-        $message = array('id' => $this->get('id'), 'message' => 'DELETED!');
-        
-        $this->response($message, 200); // 200 being the HTTP response code
-    }
-    
-    function all_get()
-    {
-        //$users = $this->some_model->getSomething( $this->get('limit') );
-        $users = array(
-			array('id' => 1, 'name' => 'Some Guy', 'email' => 'example1@example.com'),
-			array('id' => 2, 'name' => 'Person Face', 'email' => 'example2@example.com'),
-			3 => array('id' => 3, 'name' => 'Scotty', 'email' => 'example3@example.com', 'fact' => array('hobbies' => array('fartings', 'bikes'))),
-		);
-        
-        if($users)
-        {
-            $this->response($users, 200); // 200 being the HTTP response code
-        }
-
-        else
-        {
-            $this->response(array('error' => 'Couldn\'t find any users!'), 404);
-        }
-    }
-
-
-	public function send_post()
-	{
-		var_dump($this->request->body);
-	}
-
-
-	public function send_put()
-	{
-		var_dump($this->put('foo'));
-	}
 }
