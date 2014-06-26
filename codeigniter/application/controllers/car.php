@@ -9,14 +9,14 @@ class car extends REST_Controller
     {
         if(!$this->get('id'))
         {
-        	$this->response(NULL, 400);
+        	$this->response(array('error' => 'Bad Request'), 400);
         }
 
         // $user = $this->some_model->getSomething( $this->get('id') );
     	$users = array(
-			1 => array('id' => 1, 'name' => 'Some Guy', 'email' => 'example1@example.com', 'fact' => 'Loves swimming'),
-			2 => array('id' => 2, 'name' => 'Person Face', 'email' => 'example2@example.com', 'fact' => 'Has a huge face'),
-			3 => array('id' => 3, 'name' => 'Scotty', 'email' => 'example3@example.com', 'fact' => 'Is a Scott!', array('hobbies' => array('fartings', 'bikes'))),
+			1 => array('id' => 1, 'make' => 'Nissan', 'email' => 'example1@example.com', 'fact' => 'Loves swimming'),
+			2 => array('id' => 2, 'make' => 'Person Face', 'email' => 'example2@example.com', 'fact' => 'Has a huge face'),
+			3 => array('id' => 3, 'make' => 'Scotty', 'email' => 'example3@example.com', 'fact' => 'Is a Scott!', array('hobbies' => array('fartings', 'bikes'))),
 		);
 		
     	$user = @$users[$this->get('id')];
