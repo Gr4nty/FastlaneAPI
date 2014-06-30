@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Jun 30, 2014 at 06:57 PM
+-- Generation Time: Jun 30, 2014 at 11:45 PM
 -- Server version: 5.5.34
 -- PHP Version: 5.5.10
 
@@ -203,135 +203,26 @@ INSERT INTO `car_profile` (`car_profile_id`, `car_paintjob_id`, `car_make`, `car
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `users_fuel`
 --
 
-CREATE TABLE `users` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users_fuel` (
+  `fuel_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) NOT NULL,
-  `user_rank` enum('Newby','Rookie','Street Racer','King') NOT NULL DEFAULT 'Newby',
-  `user_level` int(11) NOT NULL DEFAULT '1',
-  `user_experience` bigint(20) NOT NULL DEFAULT '1',
   `user_fuel` bigint(20) NOT NULL DEFAULT '30',
   `user_fuel_max` bigint(20) NOT NULL DEFAULT '30',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id_UNIQUE` (`id`),
-  KEY `UserID_idx` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=101 ;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `user_id`, `user_rank`, `user_level`, `user_experience`, `user_fuel`, `user_fuel_max`) VALUES
-(1, 1, 'Newby', 1, 1, 30, 30),
-(2, 2, 'Newby', 1, 1, 30, 30),
-(3, 3, 'Newby', 1, 1, 30, 30),
-(4, 4, 'Newby', 1, 1, 30, 30),
-(5, 5, 'Newby', 1, 1, 30, 30),
-(6, 6, 'Newby', 1, 1, 30, 30),
-(7, 7, 'Newby', 1, 1, 30, 30),
-(8, 8, 'Newby', 1, 1, 30, 30),
-(9, 9, 'Newby', 1, 1, 30, 30),
-(10, 10, 'Newby', 1, 1, 30, 30),
-(11, 11, 'Newby', 1, 1, 30, 30),
-(12, 12, 'Newby', 1, 1, 30, 30),
-(13, 13, 'Newby', 1, 1, 30, 30),
-(14, 14, 'Newby', 1, 1, 30, 30),
-(15, 15, 'Newby', 1, 1, 30, 30),
-(16, 16, 'Newby', 1, 1, 30, 30),
-(17, 17, 'Newby', 1, 1, 30, 30),
-(18, 18, 'Newby', 1, 1, 30, 30),
-(19, 19, 'Newby', 1, 1, 30, 30),
-(20, 20, 'Newby', 1, 1, 30, 30),
-(21, 21, 'Newby', 1, 1, 30, 30),
-(22, 22, 'Newby', 1, 1, 30, 30),
-(23, 23, 'Newby', 1, 1, 30, 30),
-(24, 24, 'Newby', 1, 1, 30, 30),
-(25, 25, 'Newby', 1, 1, 30, 30),
-(26, 26, 'Newby', 1, 1, 30, 30),
-(27, 27, 'Newby', 1, 1, 30, 30),
-(28, 28, 'Newby', 1, 1, 30, 30),
-(29, 29, 'Newby', 1, 1, 30, 30),
-(30, 30, 'Newby', 1, 1, 30, 30),
-(31, 31, 'Newby', 1, 1, 30, 30),
-(32, 32, 'Newby', 1, 1, 30, 30),
-(33, 33, 'Newby', 1, 1, 30, 30),
-(34, 34, 'Newby', 1, 1, 30, 30),
-(35, 35, 'Newby', 1, 1, 30, 30),
-(36, 36, 'Newby', 1, 1, 30, 30),
-(37, 37, 'Newby', 1, 1, 30, 30),
-(38, 38, 'Newby', 1, 1, 30, 30),
-(39, 39, 'Newby', 1, 1, 30, 30),
-(40, 40, 'Newby', 1, 1, 30, 30),
-(41, 41, 'Newby', 1, 1, 30, 30),
-(42, 42, 'Newby', 1, 1, 30, 30),
-(43, 43, 'Newby', 1, 1, 30, 30),
-(44, 44, 'Newby', 1, 1, 30, 30),
-(45, 45, 'Newby', 1, 1, 30, 30),
-(46, 46, 'Newby', 1, 1, 30, 30),
-(47, 47, 'Newby', 1, 1, 30, 30),
-(48, 48, 'Newby', 1, 1, 30, 30),
-(49, 49, 'Newby', 1, 1, 30, 30),
-(50, 50, 'Newby', 1, 1, 30, 30),
-(51, 51, 'Newby', 1, 1, 30, 30),
-(52, 52, 'Newby', 1, 1, 30, 30),
-(53, 53, 'Newby', 1, 1, 30, 30),
-(54, 54, 'Newby', 1, 1, 30, 30),
-(55, 55, 'Newby', 1, 1, 30, 30),
-(56, 56, 'Newby', 1, 1, 30, 30),
-(57, 57, 'Newby', 1, 1, 30, 30),
-(58, 58, 'Newby', 1, 1, 30, 30),
-(59, 59, 'Newby', 1, 1, 30, 30),
-(60, 60, 'Newby', 1, 1, 30, 30),
-(61, 61, 'Newby', 1, 1, 30, 30),
-(62, 62, 'Newby', 1, 1, 30, 30),
-(63, 63, 'Newby', 1, 1, 30, 30),
-(64, 64, 'Newby', 1, 1, 30, 30),
-(65, 65, 'Newby', 1, 1, 30, 30),
-(66, 66, 'Newby', 1, 1, 30, 30),
-(67, 67, 'Newby', 1, 1, 30, 30),
-(68, 68, 'Newby', 1, 1, 30, 30),
-(69, 69, 'Newby', 1, 1, 30, 30),
-(70, 70, 'Newby', 1, 1, 30, 30),
-(71, 71, 'Newby', 1, 1, 30, 30),
-(72, 72, 'Newby', 1, 1, 30, 30),
-(73, 73, 'Newby', 1, 1, 30, 30),
-(74, 74, 'Newby', 1, 1, 30, 30),
-(75, 75, 'Newby', 1, 1, 30, 30),
-(76, 76, 'Newby', 1, 1, 30, 30),
-(77, 77, 'Newby', 1, 1, 30, 30),
-(78, 78, 'Newby', 1, 1, 30, 30),
-(79, 79, 'Newby', 1, 1, 30, 30),
-(80, 80, 'Newby', 1, 1, 30, 30),
-(81, 81, 'Newby', 1, 1, 30, 30),
-(82, 82, 'Newby', 1, 1, 30, 30),
-(83, 83, 'Newby', 1, 1, 30, 30),
-(84, 84, 'Newby', 1, 1, 30, 30),
-(85, 85, 'Newby', 1, 1, 30, 30),
-(86, 86, 'Newby', 1, 1, 30, 30),
-(87, 87, 'Newby', 1, 1, 30, 30),
-(88, 88, 'Newby', 1, 1, 30, 30),
-(89, 89, 'Newby', 1, 1, 30, 30),
-(90, 90, 'Newby', 1, 1, 30, 30),
-(91, 91, 'Newby', 1, 1, 30, 30),
-(92, 92, 'Newby', 1, 1, 30, 30),
-(93, 93, 'Newby', 1, 1, 30, 30),
-(94, 94, 'Newby', 1, 1, 30, 30),
-(95, 95, 'Newby', 1, 1, 30, 30),
-(96, 96, 'Newby', 1, 1, 30, 30),
-(97, 97, 'Newby', 1, 1, 30, 30),
-(98, 98, 'Newby', 1, 1, 30, 30),
-(99, 99, 'Newby', 1, 1, 30, 30),
-(100, 100, 'Newby', 1, 1, 30, 30);
+  PRIMARY KEY (`fuel_id`),
+  UNIQUE KEY `fuel_id_UNIQUE` (`fuel_id`),
+  KEY `UserID_users_fuel_idx` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_profile`
+-- Table structure for table `users_profile`
 --
 
-CREATE TABLE `user_profile` (
+CREATE TABLE `users_profile` (
   `user_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_first_name` text NOT NULL,
   `user_last_name` text NOT NULL,
@@ -345,10 +236,10 @@ CREATE TABLE `user_profile` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=101 ;
 
 --
--- Dumping data for table `user_profile`
+-- Dumping data for table `users_profile`
 --
 
-INSERT INTO `user_profile` (`user_id`, `user_first_name`, `user_last_name`, `user_facebook_id`, `user_mail_address`, `user_profile_image`, `user_registered`) VALUES
+INSERT INTO `users_profile` (`user_id`, `user_first_name`, `user_last_name`, `user_facebook_id`, `user_mail_address`, `user_profile_image`, `user_registered`) VALUES
 (1, 'Aladdin', 'Hermione', 1, 'eu.ultrices.sit@eteuismod.net', '4', '2015-10-24 00:00:00'),
 (2, 'Howard', 'Naida', 2, 'id@ultrices.com', '2', '2015-01-11 00:00:00'),
 (3, 'Reese', 'Maggie', 3, 'in@arcuetpede.edu', '5', '2022-07-17 00:00:00'),
@@ -451,13 +342,156 @@ INSERT INTO `user_profile` (`user_id`, `user_first_name`, `user_last_name`, `use
 (100, 'Erich', 'Fay', 100, 'Fusce.mi.lorem@mauriserateget.com', '2', '2019-08-15 00:00:00');
 
 --
--- Triggers `user_profile`
+-- Triggers `users_profile`
 --
 DROP TRIGGER IF EXISTS `user_profile_AINS`;
 DELIMITER //
-CREATE TRIGGER `user_profile_AINS` AFTER INSERT ON `user_profile`
+CREATE TRIGGER `user_profile_AINS` AFTER INSERT ON `users_profile`
  FOR EACH ROW BEGIN
 INSERT INTO users(user_id) VALUE(NEW.user_id);
+END
+//
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users_status`
+--
+
+CREATE TABLE `users_status` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) NOT NULL,
+  `user_rank` enum('Newby','Rookie','Street Racer','Street King') NOT NULL DEFAULT 'Newby',
+  `user_level` int(11) NOT NULL DEFAULT '1',
+  `user_experience` bigint(20) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `UserID_idx` (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=101 ;
+
+--
+-- Dumping data for table `users_status`
+--
+
+INSERT INTO `users_status` (`id`, `user_id`, `user_rank`, `user_level`, `user_experience`) VALUES
+(1, 1, 'Newby', 1, 1),
+(2, 2, 'Newby', 1, 1),
+(3, 3, 'Newby', 1, 1),
+(4, 4, 'Newby', 1, 1),
+(5, 5, 'Newby', 1, 1),
+(6, 6, 'Newby', 1, 1),
+(7, 7, 'Newby', 1, 1),
+(8, 8, 'Newby', 1, 1),
+(9, 9, 'Newby', 1, 1),
+(10, 10, 'Newby', 1, 1),
+(11, 11, 'Newby', 1, 1),
+(12, 12, 'Newby', 1, 1),
+(13, 13, 'Newby', 1, 1),
+(14, 14, 'Newby', 1, 1),
+(15, 15, 'Newby', 1, 1),
+(16, 16, 'Newby', 1, 1),
+(17, 17, 'Newby', 1, 1),
+(18, 18, 'Newby', 1, 1),
+(19, 19, 'Newby', 1, 1),
+(20, 20, 'Newby', 1, 1),
+(21, 21, 'Newby', 1, 1),
+(22, 22, 'Newby', 1, 1),
+(23, 23, 'Newby', 1, 1),
+(24, 24, 'Newby', 1, 1),
+(25, 25, 'Newby', 1, 1),
+(26, 26, 'Newby', 1, 1),
+(27, 27, 'Newby', 1, 1),
+(28, 28, 'Newby', 1, 1),
+(29, 29, 'Newby', 1, 1),
+(30, 30, 'Newby', 1, 1),
+(31, 31, 'Newby', 1, 1),
+(32, 32, 'Newby', 1, 1),
+(33, 33, 'Newby', 1, 1),
+(34, 34, 'Newby', 1, 1),
+(35, 35, 'Newby', 1, 1),
+(36, 36, 'Newby', 1, 1),
+(37, 37, 'Newby', 1, 1),
+(38, 38, 'Newby', 1, 1),
+(39, 39, 'Newby', 1, 1),
+(40, 40, 'Newby', 1, 1),
+(41, 41, 'Newby', 1, 1),
+(42, 42, 'Newby', 1, 1),
+(43, 43, 'Newby', 1, 1),
+(44, 44, 'Newby', 1, 1),
+(45, 45, 'Newby', 1, 1),
+(46, 46, 'Newby', 1, 1),
+(47, 47, 'Newby', 1, 1),
+(48, 48, 'Newby', 1, 1),
+(49, 49, 'Newby', 1, 1),
+(50, 50, 'Newby', 1, 1),
+(51, 51, 'Newby', 1, 1),
+(52, 52, 'Newby', 1, 1),
+(53, 53, 'Newby', 1, 1),
+(54, 54, 'Newby', 1, 1),
+(55, 55, 'Newby', 1, 1),
+(56, 56, 'Newby', 1, 1),
+(57, 57, 'Newby', 1, 1),
+(58, 58, 'Newby', 1, 1),
+(59, 59, 'Newby', 1, 1),
+(60, 60, 'Newby', 1, 1),
+(61, 61, 'Newby', 1, 1),
+(62, 62, 'Newby', 1, 1),
+(63, 63, 'Newby', 1, 1),
+(64, 64, 'Newby', 1, 1),
+(65, 65, 'Newby', 1, 1),
+(66, 66, 'Newby', 1, 1),
+(67, 67, 'Newby', 1, 1),
+(68, 68, 'Newby', 1, 1),
+(69, 69, 'Newby', 1, 1),
+(70, 70, 'Newby', 1, 1),
+(71, 71, 'Newby', 1, 1),
+(72, 72, 'Newby', 1, 1),
+(73, 73, 'Newby', 1, 1),
+(74, 74, 'Newby', 1, 1),
+(75, 75, 'Newby', 1, 1),
+(76, 76, 'Newby', 1, 1),
+(77, 77, 'Newby', 1, 1),
+(78, 78, 'Newby', 1, 1),
+(79, 79, 'Newby', 1, 1),
+(80, 80, 'Newby', 1, 1),
+(81, 81, 'Newby', 1, 1),
+(82, 82, 'Newby', 1, 1),
+(83, 83, 'Newby', 1, 1),
+(84, 84, 'Newby', 1, 1),
+(85, 85, 'Newby', 1, 1),
+(86, 86, 'Newby', 1, 1),
+(87, 87, 'Newby', 1, 1),
+(88, 88, 'Newby', 1, 1),
+(89, 89, 'Newby', 1, 1),
+(90, 90, 'Newby', 1, 1),
+(91, 91, 'Newby', 1, 1),
+(92, 92, 'Newby', 1, 1),
+(93, 93, 'Newby', 1, 1),
+(94, 94, 'Newby', 1, 1),
+(95, 95, 'Newby', 1, 1),
+(96, 96, 'Newby', 1, 1),
+(97, 97, 'Newby', 1, 1),
+(98, 98, 'Newby', 1, 1),
+(99, 99, 'Newby', 1, 1),
+(100, 100, 'Newby', 1, 1);
+
+--
+-- Triggers `users_status`
+--
+DROP TRIGGER IF EXISTS `user_BUPD`;
+DELIMITER //
+CREATE TRIGGER `user_BUPD` BEFORE UPDATE ON `users_status`
+ FOR EACH ROW BEGIN
+DECLARE x float;
+SET x = POW(new.user_experience, (1/3));
+SET NEW.user_level=floor(x);
+CASE
+	  WHEN NEW.user_level >= 1 AND NEW.user_level < 15  THEN SET NEW.user_rank = 'Newby';
+      WHEN NEW.user_level >= 15 AND NEW.user_level < 30  THEN SET NEW.user_rank = 'Rookie';
+      WHEN NEW.user_level >= 30 AND NEW.user_level < 80  THEN SET NEW.user_rank = 'Street Racer';
+	  WHEN NEW.user_level >= 80  THEN SET NEW.user_rank = 'Street King';
+END CASE;
 END
 //
 DELIMITER ;
@@ -472,7 +506,7 @@ DELIMITER ;
 ALTER TABLE `cars`
   ADD CONSTRAINT `CarPaintjobID_cars` FOREIGN KEY (`car_paintjob_id`) REFERENCES `car_paintjob` (`car_paintjob_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `CarProfileID_cars` FOREIGN KEY (`car_profile_id`) REFERENCES `car_profile` (`car_profile_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `UserID_cars` FOREIGN KEY (`owner_user_id`) REFERENCES `user_profile` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `UserID_cars` FOREIGN KEY (`owner_user_id`) REFERENCES `users_profile` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `cars_history`
@@ -487,7 +521,13 @@ ALTER TABLE `car_paintjob`
   ADD CONSTRAINT `CarProfileID_paintjob` FOREIGN KEY (`car_profile_id`) REFERENCES `car_profile` (`car_profile_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `users`
+-- Constraints for table `users_fuel`
 --
-ALTER TABLE `users`
-  ADD CONSTRAINT `UserID_users` FOREIGN KEY (`user_id`) REFERENCES `user_profile` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `users_fuel`
+  ADD CONSTRAINT `UserID_users_fuel` FOREIGN KEY (`user_id`) REFERENCES `users_profile` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `users_status`
+--
+ALTER TABLE `users_status`
+  ADD CONSTRAINT `UserID_users` FOREIGN KEY (`user_id`) REFERENCES `users_profile` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
