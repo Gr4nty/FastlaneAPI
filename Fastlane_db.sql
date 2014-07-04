@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Jun 30, 2014 at 11:45 PM
+-- Generation Time: Jul 04, 2014 at 06:13 PM
 -- Server version: 5.5.34
 -- PHP Version: 5.5.10
 
@@ -56,6 +56,24 @@ CREATE TABLE `cars_history` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cars_market`
+--
+
+CREATE TABLE `cars_market` (
+  `market_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `car_id` bigint(20) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `market_listing_price` int(11) DEFAULT NULL,
+  `market_listing_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`market_id`),
+  UNIQUE KEY `market_id_UNIQUE` (`market_id`),
+  UNIQUE KEY `car_id_UNIQUE` (`car_id`),
+  KEY `UserID_market_idx` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `car_paintjob`
 --
 
@@ -87,118 +105,140 @@ CREATE TABLE `car_profile` (
   `car_type` text NOT NULL,
   `car_available` int(11) NOT NULL,
   `car_left` int(11) NOT NULL,
+  `car_price` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`car_profile_id`),
   KEY `CarPaintjobID_car_profile_idx` (`car_paintjob_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=104 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=105 ;
 
 --
 -- Dumping data for table `car_profile`
 --
 
-INSERT INTO `car_profile` (`car_profile_id`, `car_paintjob_id`, `car_make`, `car_model`, `car_hp`, `car_weight`, `car_torque`, `car_release_date`, `car_type`, `car_available`, `car_left`) VALUES
-(1, 1, 'Nissan', 'GT-R', 1000, 100, 100, '2014-06-03', 'Limited', 300, 15),
-(2, 2, 'Ferrari', 'FXX', 1345, 200, 200, '2014-06-30', 'Exotic', 7, 1),
-(3, 5, 'Ferrari', 'Testarosa', 788, 120, 102, '2014-06-02', 'Regular', 50, 17),
-(4, 2, 'Volkswagen', 'Jana', 100, 1008, 1969, '2021-07-15', 'Regular', 439, 18),
-(5, 1, 'Volkswagen', 'Eugenia', 101, 1501, 186, '2017-09-24', 'Exotic', 982, 75),
-(6, 4, 'Toyota', 'Alexa', 102, 3021, 2011, '2018-06-30', 'Exotic', 777, 21),
-(7, 3, 'Nissan', 'Brenda', 103, 1799, 1787, '2021-12-24', 'Limited', 116, 15),
-(8, 5, 'Audi', 'Hedwig', 104, 2564, 1338, '2018-11-22', 'Limited', 793, 43),
-(9, 2, 'Ferrari', 'Geraldine', 105, 3307, 1309, '2019-03-16', 'Regular', 158, 48),
-(10, 5, 'Ferrari', 'Belle', 106, 1799, 565, '2014-02-11', 'Exotic', 1000, 50),
-(11, 1, 'Audi', 'Desirae', 107, 1251, 1296, '2020-02-02', 'Exotic', 655, 60),
-(12, 5, 'Volkswagen', 'Bo', 108, 1837, 1351, '2019-02-16', 'Exotic', 569, 88),
-(13, 3, 'Ferrari', 'Jaden', 109, 641, 464, '2021-03-14', 'Limited', 741, 76),
-(14, 5, 'Ferrari', 'Leila', 110, 4534, 1238, '2016-12-30', 'Limited', 808, 63),
-(15, 4, 'Audi', 'Erin', 111, 3169, 776, '2018-01-18', 'Exotic', 599, 77),
-(16, 1, 'Nissan', 'Carolyn', 112, 1338, 1692, '2019-06-03', 'Exotic', 797, 33),
-(17, 5, 'Nissan', 'Cynthia', 113, 912, 801, '2022-07-28', 'Limited', 225, 65),
-(18, 5, 'Nissan', 'Vivian', 114, 3427, 714, '2019-09-09', 'Regular', 169, 64),
-(19, 5, 'Volkswagen', 'Emily', 115, 287, 2065, '2015-05-17', 'Exotic', 198, 87),
-(20, 1, 'Audi', 'Alyssa', 116, 356, 461, '2021-07-22', 'Limited', 443, 99),
-(21, 2, 'Nissan', 'Meghan', 117, 3893, 1069, '2014-04-14', 'Limited', 709, 75),
-(22, 2, 'Fiat', 'Iola', 118, 1037, 1378, '2021-09-16', 'Exotic', 943, 80),
-(23, 2, 'Ferrari', 'Maisie', 119, 4163, 1276, '2020-11-03', 'Exotic', 917, 48),
-(24, 3, 'Toyota', 'Leila', 120, 4764, 359, '2018-05-31', 'Limited', 811, 91),
-(25, 3, 'Nissan', 'Karleigh', 121, 2963, 1898, '2022-02-23', 'Regular', 421, 6),
-(26, 4, 'Fiat', 'Rinah', 122, 3776, 1266, '2015-03-10', 'Regular', 513, 85),
-(27, 1, 'Ferrari', 'Bo', 123, 1209, 1902, '2020-11-10', 'Exotic', 695, 44),
-(28, 2, 'Toyota', 'Fleur', 124, 4691, 119, '2014-12-15', 'Regular', 725, 98),
-(29, 1, 'Nissan', 'Eleanor', 125, 4348, 1882, '2019-05-03', 'Exotic', 644, 9),
-(30, 3, 'Fiat', 'Nora', 126, 3557, 546, '2015-10-09', 'Exotic', 175, 42),
-(31, 5, 'Volkswagen', 'Karyn', 127, 4799, 2123, '2019-03-22', 'Regular', 690, 13),
-(32, 5, 'Nissan', 'India', 128, 3460, 2039, '2021-03-28', 'Exotic', 416, 39),
-(33, 5, 'Volkswagen', 'Isadora', 129, 4642, 1169, '2016-03-17', 'Limited', 778, 71),
-(34, 3, 'Volkswagen', 'Irene', 130, 2468, 2084, '2016-01-25', 'Regular', 902, 48),
-(35, 3, 'Ferrari', 'Ella', 131, 2809, 2151, '2014-12-21', 'Limited', 679, 37),
-(36, 5, 'Toyota', 'Whilemina', 132, 3871, 1041, '2020-06-12', 'Regular', 237, 34),
-(37, 4, 'Fiat', 'Quail', 133, 2714, 589, '2017-07-29', 'Limited', 309, 24),
-(38, 4, 'Nissan', 'Darrel', 134, 2167, 1200, '2016-04-09', 'Limited', 580, 47),
-(39, 5, 'Toyota', 'Mechelle', 135, 2141, 1240, '2022-03-29', 'Exotic', 394, 56),
-(40, 4, 'Toyota', 'Charity', 136, 832, 2149, '2014-11-26', 'Regular', 773, 2),
-(41, 1, 'Ferrari', 'Harriet', 137, 3922, 1333, '2017-12-07', 'Regular', 495, 3),
-(42, 3, 'Toyota', 'Yoko', 138, 4173, 1537, '2021-09-02', 'Limited', 777, 53),
-(43, 3, 'Audi', 'Mollie', 139, 268, 1045, '2015-05-19', 'Regular', 599, 76),
-(44, 1, 'Fiat', 'Rose', 140, 553, 1384, '2017-12-04', 'Limited', 705, 6),
-(45, 2, 'Volkswagen', 'Teagan', 141, 4884, 996, '2022-07-07', 'Regular', 846, 46),
-(46, 5, 'Toyota', 'Gisela', 142, 893, 661, '2013-12-19', 'Exotic', 117, 31),
-(47, 3, 'Audi', 'Jemima', 143, 4410, 403, '2013-11-27', 'Regular', 643, 19),
-(48, 4, 'Fiat', 'Emerald', 144, 4912, 1360, '2018-07-01', 'Limited', 775, 43),
-(49, 3, 'Fiat', 'Colleen', 145, 3986, 1530, '2014-08-25', 'Regular', 242, 78),
-(50, 1, 'Nissan', 'Whitney', 146, 885, 1353, '2014-10-25', 'Exotic', 247, 53),
-(51, 5, 'Toyota', 'Jana', 147, 4911, 1815, '2013-11-27', 'Exotic', 105, 98),
-(52, 3, 'Audi', 'Quynn', 148, 4211, 866, '2015-10-14', 'Limited', 816, 17),
-(53, 2, 'Fiat', 'Jamalia', 149, 298, 775, '2022-07-24', 'Limited', 498, 8),
-(54, 2, 'Nissan', 'Adria', 150, 2134, 557, '2016-10-28', 'Limited', 713, 46),
-(55, 5, 'Fiat', 'Catherine', 151, 2242, 619, '2016-09-24', 'Regular', 472, 70),
-(56, 4, 'Audi', 'Aspen', 152, 2385, 1973, '2016-12-11', 'Exotic', 198, 12),
-(57, 1, 'Nissan', 'Flavia', 153, 1481, 1842, '2017-04-16', 'Regular', 421, 2),
-(58, 2, 'Audi', 'Lael', 154, 1251, 538, '2019-07-30', 'Exotic', 232, 6),
-(59, 5, 'Volkswagen', 'Pandora', 155, 3008, 1351, '2020-07-11', 'Regular', 261, 49),
-(60, 2, 'Fiat', 'Emi', 156, 4522, 1380, '2017-03-08', 'Limited', 726, 53),
-(61, 2, 'Nissan', 'Angela', 157, 1467, 522, '2017-10-23', 'Limited', 533, 54),
-(62, 4, 'Audi', 'Lillith', 158, 2822, 480, '2016-03-29', 'Regular', 294, 13),
-(63, 4, 'Fiat', 'Cailin', 159, 3399, 329, '2019-05-30', 'Exotic', 770, 9),
-(64, 1, 'Ferrari', 'Janna', 160, 4997, 882, '2017-08-01', 'Limited', 428, 56),
-(65, 3, 'Ferrari', 'Farrah', 161, 781, 1563, '2018-12-05', 'Limited', 992, 62),
-(66, 2, 'Nissan', 'Brenda', 162, 995, 2121, '2021-04-23', 'Limited', 755, 72),
-(67, 5, 'Audi', 'Shelby', 163, 370, 1870, '2014-08-19', 'Limited', 685, 67),
-(68, 1, 'Nissan', 'Jessica', 164, 2971, 1285, '2018-10-11', 'Regular', 982, 22),
-(69, 5, 'Ferrari', 'Yeo', 165, 3008, 1742, '2016-11-23', 'Limited', 704, 69),
-(70, 1, 'Toyota', 'Gillian', 166, 2981, 372, '2021-10-11', 'Regular', 180, 47),
-(71, 1, 'Toyota', 'Taylor', 167, 2252, 380, '2018-01-28', 'Exotic', 678, 43),
-(72, 2, 'Audi', 'Rinah', 168, 1088, 1375, '2013-12-03', 'Limited', 591, 77),
-(73, 2, 'Nissan', 'Basia', 169, 3450, 807, '2021-02-07', 'Regular', 631, 78),
-(74, 5, 'Volkswagen', 'Faith', 170, 680, 999, '2020-09-30', 'Regular', 982, 62),
-(75, 2, 'Volkswagen', 'Caryn', 171, 2200, 1308, '2016-01-16', 'Regular', 182, 26),
-(76, 3, 'Volkswagen', 'Jayme', 172, 1840, 1832, '2013-07-17', 'Regular', 208, 89),
-(77, 2, 'Fiat', 'Noelle', 173, 1055, 1431, '2015-07-01', 'Exotic', 800, 35),
-(78, 1, 'Volkswagen', 'Xena', 174, 1419, 2091, '2016-01-26', 'Limited', 111, 72),
-(79, 3, 'Nissan', 'Jaquelyn', 175, 919, 1586, '2019-11-13', 'Limited', 537, 13),
-(80, 5, 'Toyota', 'Lydia', 176, 2572, 1375, '2015-11-05', 'Limited', 206, 99),
-(81, 4, 'Nissan', 'Courtney', 177, 2624, 609, '2013-09-12', 'Regular', 348, 15),
-(82, 5, 'Ferrari', 'Uma', 178, 3770, 845, '2018-05-22', 'Exotic', 991, 65),
-(83, 3, 'Ferrari', 'Maryam', 179, 4163, 1874, '2019-03-07', 'Limited', 592, 9),
-(84, 3, 'Nissan', 'Tanya', 180, 1393, 1141, '2018-10-20', 'Limited', 623, 85),
-(85, 4, 'Nissan', 'Jaquelyn', 181, 3284, 1241, '2021-02-23', 'Limited', 101, 71),
-(86, 1, 'Audi', 'Joy', 182, 1292, 1080, '2019-06-01', 'Limited', 275, 67),
-(87, 2, 'Audi', 'Scarlett', 183, 4727, 1395, '2019-04-04', 'Exotic', 410, 48),
-(88, 4, 'Nissan', 'Carolyn', 184, 2390, 1926, '2022-08-11', 'Limited', 402, 33),
-(89, 4, 'Fiat', 'Ori', 185, 2664, 417, '2022-08-30', 'Regular', 514, 80),
-(90, 1, 'Ferrari', 'Reagan', 186, 4733, 1240, '2021-01-18', 'Exotic', 652, 33),
-(91, 3, 'Fiat', 'Aurora', 187, 2564, 490, '2014-05-12', 'Regular', 829, 65),
-(92, 5, 'Audi', 'Savannah', 188, 864, 1841, '2017-07-18', 'Limited', 378, 40),
-(93, 2, 'Volkswagen', 'Ann', 189, 1960, 1404, '2015-11-03', 'Exotic', 189, 78),
-(94, 2, 'Ferrari', 'Bianca', 190, 4539, 1174, '2021-05-22', 'Regular', 190, 10),
-(95, 3, 'Toyota', 'Galena', 191, 4960, 1346, '2021-03-18', 'Limited', 671, 55),
-(96, 5, 'Fiat', 'Darrel', 192, 3715, 869, '2022-04-14', 'Limited', 638, 94),
-(97, 5, 'Toyota', 'Shea', 193, 1873, 175, '2014-07-09', 'Limited', 883, 61),
-(98, 2, 'Toyota', 'Jayme', 194, 2091, 182, '2015-07-23', 'Exotic', 778, 61),
-(99, 2, 'Fiat', 'Darryl', 195, 4874, 1874, '2018-08-31', 'Exotic', 225, 96),
-(100, 4, 'Audi', 'Nell', 196, 2717, 588, '2013-07-13', 'Regular', 208, 6),
-(101, 1, 'Volkswagen', 'Ayanna', 197, 720, 820, '2020-11-16', 'Exotic', 177, 68),
-(102, 5, 'Audi', 'Hayley', 198, 3624, 1330, '2020-03-09', 'Regular', 996, 60),
-(103, 4, 'Volkswagen', 'Rae', 199, 424, 640, '2020-04-13', 'Exotic', 680, 72);
+INSERT INTO `car_profile` (`car_profile_id`, `car_paintjob_id`, `car_make`, `car_model`, `car_hp`, `car_weight`, `car_torque`, `car_release_date`, `car_type`, `car_available`, `car_left`, `car_price`) VALUES
+(1, 1, 'Nissan', 'GT-R', 1000, 100, 100, '2014-06-03', 'Limited', 300, 15, NULL),
+(2, 2, 'Ferrari', 'FXX', 1345, 200, 200, '2014-06-30', 'Exotic', 7, 1, NULL),
+(3, 5, 'Ferrari', 'Testarosa', 788, 120, 102, '2014-06-02', 'Regular', 50, 17, NULL),
+(4, 2, 'Volkswagen', 'Jana', 100, 1008, 1969, '2021-07-15', 'Regular', 439, 18, NULL),
+(5, 1, 'Volkswagen', 'Eugenia', 101, 1501, 186, '2017-09-24', 'Exotic', 982, 75, NULL),
+(6, 4, 'Toyota', 'Alexa', 102, 3021, 2011, '2018-06-30', 'Exotic', 777, 21, NULL),
+(7, 3, 'Nissan', 'Brenda', 103, 1799, 1787, '2021-12-24', 'Limited', 116, 15, NULL),
+(8, 5, 'Audi', 'Hedwig', 104, 2564, 1338, '2018-11-22', 'Limited', 793, 43, NULL),
+(9, 2, 'Ferrari', 'Geraldine', 105, 3307, 1309, '2019-03-16', 'Regular', 158, 48, NULL),
+(10, 5, 'Ferrari', 'Belle', 106, 1799, 565, '2014-02-11', 'Exotic', 1000, 50, NULL),
+(11, 1, 'Audi', 'Desirae', 107, 1251, 1296, '2020-02-02', 'Exotic', 655, 60, NULL),
+(12, 5, 'Volkswagen', 'Bo', 108, 1837, 1351, '2019-02-16', 'Exotic', 569, 88, NULL),
+(13, 3, 'Ferrari', 'Jaden', 109, 641, 464, '2021-03-14', 'Limited', 741, 76, NULL),
+(14, 5, 'Ferrari', 'Leila', 110, 4534, 1238, '2016-12-30', 'Limited', 808, 63, NULL),
+(15, 4, 'Audi', 'Erin', 111, 3169, 776, '2018-01-18', 'Exotic', 599, 77, NULL),
+(16, 1, 'Nissan', 'Carolyn', 112, 1338, 1692, '2019-06-03', 'Exotic', 797, 33, NULL),
+(17, 5, 'Nissan', 'Cynthia', 113, 912, 801, '2022-07-28', 'Limited', 225, 65, NULL),
+(18, 5, 'Nissan', 'Vivian', 114, 3427, 714, '2019-09-09', 'Regular', 169, 64, NULL),
+(19, 5, 'Volkswagen', 'Emily', 115, 287, 2065, '2015-05-17', 'Exotic', 198, 87, NULL),
+(20, 1, 'Audi', 'Alyssa', 116, 356, 461, '2021-07-22', 'Limited', 443, 99, NULL),
+(21, 2, 'Nissan', 'Meghan', 117, 3893, 1069, '2014-04-14', 'Limited', 709, 75, NULL),
+(22, 2, 'Fiat', 'Iola', 118, 1037, 1378, '2021-09-16', 'Exotic', 943, 80, NULL),
+(23, 2, 'Ferrari', 'Maisie', 119, 4163, 1276, '2020-11-03', 'Exotic', 917, 48, NULL),
+(24, 3, 'Toyota', 'Leila', 120, 4764, 359, '2018-05-31', 'Limited', 811, 91, NULL),
+(25, 3, 'Nissan', 'Karleigh', 121, 2963, 1898, '2022-02-23', 'Regular', 421, 6, NULL),
+(26, 4, 'Fiat', 'Rinah', 122, 3776, 1266, '2015-03-10', 'Regular', 513, 85, NULL),
+(27, 1, 'Ferrari', 'Bo', 123, 1209, 1902, '2020-11-10', 'Exotic', 695, 44, NULL),
+(28, 2, 'Toyota', 'Fleur', 124, 4691, 119, '2014-12-15', 'Regular', 725, 98, NULL),
+(29, 1, 'Nissan', 'Eleanor', 125, 4348, 1882, '2019-05-03', 'Exotic', 644, 9, NULL),
+(30, 3, 'Fiat', 'Nora', 126, 3557, 546, '2015-10-09', 'Exotic', 175, 42, NULL),
+(31, 5, 'Volkswagen', 'Karyn', 127, 4799, 2123, '2019-03-22', 'Regular', 690, 13, NULL),
+(32, 5, 'Nissan', 'India', 128, 3460, 2039, '2021-03-28', 'Exotic', 416, 39, NULL),
+(33, 5, 'Volkswagen', 'Isadora', 129, 4642, 1169, '2016-03-17', 'Limited', 778, 71, NULL),
+(34, 3, 'Volkswagen', 'Irene', 130, 2468, 2084, '2016-01-25', 'Regular', 902, 48, NULL),
+(35, 3, 'Ferrari', 'Ella', 131, 2809, 2151, '2014-12-21', 'Limited', 679, 37, NULL),
+(36, 5, 'Toyota', 'Whilemina', 132, 3871, 1041, '2020-06-12', 'Regular', 237, 34, NULL),
+(37, 4, 'Fiat', 'Quail', 133, 2714, 589, '2017-07-29', 'Limited', 309, 24, NULL),
+(38, 4, 'Nissan', 'Darrel', 134, 2167, 1200, '2016-04-09', 'Limited', 580, 47, NULL),
+(39, 5, 'Toyota', 'Mechelle', 135, 2141, 1240, '2022-03-29', 'Exotic', 394, 56, NULL),
+(40, 4, 'Toyota', 'Charity', 136, 832, 2149, '2014-11-26', 'Regular', 773, 2, NULL),
+(41, 1, 'Ferrari', 'Harriet', 137, 3922, 1333, '2017-12-07', 'Regular', 495, 3, NULL),
+(42, 3, 'Toyota', 'Yoko', 138, 4173, 1537, '2021-09-02', 'Limited', 777, 53, NULL),
+(43, 3, 'Audi', 'Mollie', 139, 268, 1045, '2015-05-19', 'Regular', 599, 76, NULL),
+(44, 1, 'Fiat', 'Rose', 140, 553, 1384, '2017-12-04', 'Limited', 705, 6, NULL),
+(45, 2, 'Volkswagen', 'Teagan', 141, 4884, 996, '2022-07-07', 'Regular', 846, 46, NULL),
+(46, 5, 'Toyota', 'Gisela', 142, 893, 661, '2013-12-19', 'Exotic', 117, 31, NULL),
+(47, 3, 'Audi', 'Jemima', 143, 4410, 403, '2013-11-27', 'Regular', 643, 19, NULL),
+(48, 4, 'Fiat', 'Emerald', 144, 4912, 1360, '2018-07-01', 'Limited', 775, 43, NULL),
+(49, 3, 'Fiat', 'Colleen', 145, 3986, 1530, '2014-08-25', 'Regular', 242, 78, NULL),
+(50, 1, 'Nissan', 'Whitney', 146, 885, 1353, '2014-10-25', 'Exotic', 247, 53, NULL),
+(51, 5, 'Toyota', 'Jana', 147, 4911, 1815, '2013-11-27', 'Exotic', 105, 98, NULL),
+(52, 3, 'Audi', 'Quynn', 148, 4211, 866, '2015-10-14', 'Limited', 816, 17, NULL),
+(53, 2, 'Fiat', 'Jamalia', 149, 298, 775, '2022-07-24', 'Limited', 498, 8, NULL),
+(54, 2, 'Nissan', 'Adria', 150, 2134, 557, '2016-10-28', 'Limited', 713, 46, NULL),
+(55, 5, 'Fiat', 'Catherine', 151, 2242, 619, '2016-09-24', 'Regular', 472, 70, NULL),
+(56, 4, 'Audi', 'Aspen', 152, 2385, 1973, '2016-12-11', 'Exotic', 198, 12, NULL),
+(57, 1, 'Nissan', 'Flavia', 153, 1481, 1842, '2017-04-16', 'Regular', 421, 2, NULL),
+(58, 2, 'Audi', 'Lael', 154, 1251, 538, '2019-07-30', 'Exotic', 232, 6, NULL),
+(59, 5, 'Volkswagen', 'Pandora', 155, 3008, 1351, '2020-07-11', 'Regular', 261, 49, NULL),
+(60, 2, 'Fiat', 'Emi', 156, 4522, 1380, '2017-03-08', 'Limited', 726, 53, NULL),
+(61, 2, 'Nissan', 'Angela', 157, 1467, 522, '2017-10-23', 'Limited', 533, 54, NULL),
+(62, 4, 'Audi', 'Lillith', 158, 2822, 480, '2016-03-29', 'Regular', 294, 13, NULL),
+(63, 4, 'Fiat', 'Cailin', 159, 3399, 329, '2019-05-30', 'Exotic', 770, 9, NULL),
+(64, 1, 'Ferrari', 'Janna', 160, 4997, 882, '2017-08-01', 'Limited', 428, 56, NULL),
+(65, 3, 'Ferrari', 'Farrah', 161, 781, 1563, '2018-12-05', 'Limited', 992, 62, NULL),
+(66, 2, 'Nissan', 'Brenda', 162, 995, 2121, '2021-04-23', 'Limited', 755, 72, NULL),
+(67, 5, 'Audi', 'Shelby', 163, 370, 1870, '2014-08-19', 'Limited', 685, 67, NULL),
+(68, 1, 'Nissan', 'Jessica', 164, 2971, 1285, '2018-10-11', 'Regular', 982, 22, NULL),
+(69, 5, 'Ferrari', 'Yeo', 165, 3008, 1742, '2016-11-23', 'Limited', 704, 69, NULL),
+(70, 1, 'Toyota', 'Gillian', 166, 2981, 372, '2021-10-11', 'Regular', 180, 47, NULL),
+(71, 1, 'Toyota', 'Taylor', 167, 2252, 380, '2018-01-28', 'Exotic', 678, 43, NULL),
+(72, 2, 'Audi', 'Rinah', 168, 1088, 1375, '2013-12-03', 'Limited', 591, 77, NULL),
+(73, 2, 'Nissan', 'Basia', 169, 3450, 807, '2021-02-07', 'Regular', 631, 78, NULL),
+(74, 5, 'Volkswagen', 'Faith', 170, 680, 999, '2020-09-30', 'Regular', 982, 62, NULL),
+(75, 2, 'Volkswagen', 'Caryn', 171, 2200, 1308, '2016-01-16', 'Regular', 182, 26, NULL),
+(76, 3, 'Volkswagen', 'Jayme', 172, 1840, 1832, '2013-07-17', 'Regular', 208, 89, NULL),
+(77, 2, 'Fiat', 'Noelle', 173, 1055, 1431, '2015-07-01', 'Exotic', 800, 35, NULL),
+(78, 1, 'Volkswagen', 'Xena', 174, 1419, 2091, '2016-01-26', 'Limited', 111, 72, NULL),
+(79, 3, 'Nissan', 'Jaquelyn', 175, 919, 1586, '2019-11-13', 'Limited', 537, 13, NULL),
+(80, 5, 'Toyota', 'Lydia', 176, 2572, 1375, '2015-11-05', 'Limited', 206, 99, NULL),
+(81, 4, 'Nissan', 'Courtney', 177, 2624, 609, '2013-09-12', 'Regular', 348, 15, NULL),
+(82, 5, 'Ferrari', 'Uma', 178, 3770, 845, '2018-05-22', 'Exotic', 991, 65, NULL),
+(83, 3, 'Ferrari', 'Maryam', 179, 4163, 1874, '2019-03-07', 'Limited', 592, 9, NULL),
+(84, 3, 'Nissan', 'Tanya', 180, 1393, 1141, '2018-10-20', 'Limited', 623, 85, NULL),
+(85, 4, 'Nissan', 'Jaquelyn', 181, 3284, 1241, '2021-02-23', 'Limited', 101, 71, NULL),
+(86, 1, 'Audi', 'Joy', 182, 1292, 1080, '2019-06-01', 'Limited', 275, 67, NULL),
+(87, 2, 'Audi', 'Scarlett', 183, 4727, 1395, '2019-04-04', 'Exotic', 410, 48, NULL),
+(88, 4, 'Nissan', 'Carolyn', 184, 2390, 1926, '2022-08-11', 'Limited', 402, 33, NULL),
+(89, 4, 'Fiat', 'Ori', 185, 2664, 417, '2022-08-30', 'Regular', 514, 80, NULL),
+(90, 1, 'Ferrari', 'Reagan', 186, 4733, 1240, '2021-01-18', 'Exotic', 652, 33, NULL),
+(91, 3, 'Fiat', 'Aurora', 187, 2564, 490, '2014-05-12', 'Regular', 829, 65, NULL),
+(92, 5, 'Audi', 'Savannah', 188, 864, 1841, '2017-07-18', 'Limited', 378, 40, NULL),
+(93, 2, 'Volkswagen', 'Ann', 189, 1960, 1404, '2015-11-03', 'Exotic', 189, 78, NULL),
+(94, 2, 'Ferrari', 'Bianca', 190, 4539, 1174, '2021-05-22', 'Regular', 190, 10, NULL),
+(95, 3, 'Toyota', 'Galena', 191, 4960, 1346, '2021-03-18', 'Limited', 671, 55, NULL),
+(96, 5, 'Fiat', 'Darrel', 192, 3715, 869, '2022-04-14', 'Limited', 638, 94, NULL),
+(97, 5, 'Toyota', 'Shea', 193, 1873, 175, '2014-07-09', 'Limited', 883, 61, NULL),
+(98, 2, 'Toyota', 'Jayme', 194, 2091, 182, '2015-07-23', 'Exotic', 778, 61, NULL),
+(99, 2, 'Fiat', 'Darryl', 195, 4874, 1874, '2018-08-31', 'Exotic', 225, 96, NULL),
+(100, 4, 'Audi', 'Nell', 196, 2717, 588, '2013-07-13', 'Regular', 208, 6, NULL),
+(101, 1, 'Volkswagen', 'Ayanna', 197, 720, 820, '2020-11-16', 'Exotic', 177, 68, NULL),
+(102, 5, 'Audi', 'Hayley', 198, 3624, 1330, '2020-03-09', 'Regular', 996, 60, NULL),
+(103, 4, 'Volkswagen', 'Rae', 199, 424, 640, '2020-04-13', 'Exotic', 680, 72, NULL),
+(104, 56, 'Locus', 'Plethore', 1000, 10, 210, '2014-07-08', 'Exotic', 100, 12, 123000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `race`
+--
+
+CREATE TABLE `race` (
+  `race_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `race_type_id` varchar(45) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `user_id_opponent` bigint(20) DEFAULT NULL,
+  `car_id` bigint(20) DEFAULT NULL,
+  `car_id_opponent` bigint(20) DEFAULT NULL,
+  `race_date` bigint(20) DEFAULT NULL,
+  `race_winner` bigint(20) DEFAULT NULL,
+  `race_score` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`race_id`),
+  UNIQUE KEY `race_id_UNIQUE` (`race_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -212,9 +252,40 @@ CREATE TABLE `users_fuel` (
   `user_fuel` bigint(20) NOT NULL DEFAULT '30',
   `user_fuel_max` bigint(20) NOT NULL DEFAULT '30',
   PRIMARY KEY (`fuel_id`),
-  UNIQUE KEY `fuel_id_UNIQUE` (`fuel_id`),
+  UNIQUE KEY `user_id_UNIQUE` (`user_id`),
   KEY `UserID_users_fuel_idx` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `users_fuel`
+--
+
+INSERT INTO `users_fuel` (`fuel_id`, `user_id`, `user_fuel`, `user_fuel_max`) VALUES
+(1, 1, 2, 30),
+(2, 3, 15, 40);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users_money`
+--
+
+CREATE TABLE `users_money` (
+  `users_money_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) NOT NULL,
+  `user_money` bigint(20) DEFAULT '25000',
+  `user_coin` bigint(20) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`users_money_id`),
+  UNIQUE KEY `user_id_UNIQUE` (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `users_money`
+--
+
+INSERT INTO `users_money` (`users_money_id`, `user_id`, `user_money`, `user_coin`) VALUES
+(1, 1, 25000, 0),
+(2, 2, 45000, 3);
 
 -- --------------------------------------------------------
 
@@ -375,7 +446,7 @@ CREATE TABLE `users_status` (
 --
 
 INSERT INTO `users_status` (`id`, `user_id`, `user_rank`, `user_level`, `user_experience`) VALUES
-(1, 1, 'Newby', 1, 1),
+(1, 1, 'Newby', 13, 2345),
 (2, 2, 'Newby', 1, 1),
 (3, 3, 'Newby', 1, 1),
 (4, 4, 'Newby', 1, 1),
@@ -513,6 +584,13 @@ ALTER TABLE `cars`
 --
 ALTER TABLE `cars_history`
   ADD CONSTRAINT `CarID_cars_history` FOREIGN KEY (`car_id`) REFERENCES `cars` (`car_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `cars_market`
+--
+ALTER TABLE `cars_market`
+  ADD CONSTRAINT `CarID_market` FOREIGN KEY (`car_id`) REFERENCES `cars` (`car_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `UserID_market` FOREIGN KEY (`user_id`) REFERENCES `users_profile` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `car_paintjob`

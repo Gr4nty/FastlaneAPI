@@ -27,7 +27,7 @@ class user extends REST_Controller
             } 
         else 
             {
-            $user = $this->user_model->getUserById($this->get('id'));
+            $user = $this->user_model->getUserProfileById($this->get('id'));
             }
 
         if ($user) 
@@ -39,5 +39,64 @@ class user extends REST_Controller
             $this->response(array('error' => 'User not found'), 404);
             }
     }
+    function status_get() {
 
+        if (!$this->get('id') || is_numeric($this->get('id')) == false) 
+            {
+            $this->response(array('error' => 'Bad Request'), 400);
+            } 
+        else 
+            {
+            $user = $this->user_model->getUserStatusById($this->get('id'));
+            }
+
+        if ($user) 
+            {
+            $this->response($user, 200); // 200 being the HTTP response code
+            } 
+        else 
+            {
+            $this->response(array('error' => 'User not found'), 404);
+            }
+}
+    function fuel_get() {
+
+            if (!$this->get('id') || is_numeric($this->get('id')) == false) 
+                {
+                $this->response(array('error' => 'Bad Request'), 400);
+                } 
+            else 
+                {
+                $user = $this->user_model->getUserFuelById($this->get('id'));
+                }
+
+            if ($user) 
+                {
+                $this->response($user, 200); // 200 being the HTTP response code
+                } 
+            else 
+                {
+                $this->response(array('error' => 'User not found'), 404);
+                }
+    }
+    function money_get() {
+
+            if (!$this->get('id') || is_numeric($this->get('id')) == false) 
+                {
+                $this->response(array('error' => 'Bad Request'), 400);
+                } 
+            else 
+                {
+                $user = $this->user_model->getUserMoneyById($this->get('id'));
+                }
+
+            if ($user) 
+                {
+                $this->response($user, 200); // 200 being the HTTP response code
+                } 
+            else 
+                {
+                $this->response(array('error' => 'User not found'), 404);
+                }
+    }
 }
